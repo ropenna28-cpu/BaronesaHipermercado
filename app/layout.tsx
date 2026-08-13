@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import { Fraunces, Work_Sans } from 'next/font/google';
 import './globals.css';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 
 const fraunces = Fraunces({
   subsets: ['latin'],
@@ -16,19 +14,15 @@ const workSans = Work_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'Baronesa — Hipermercado',
+  title: 'Baronesa — Desde 1998',
   description:
-    'Baronesa: hipermercado completo com hortifruti, açougue, adega, padaria e a maior loja de CDs, DVDs e vinis da região.',
+    'Baronesa: quase três décadas servindo a região com frescor, variedade e uma paixão por música que virou tradição.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR" className={`${fraunces.variable} ${workSans.variable}`}>
-      <body className="font-body">
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-      </body>
+      <body className="font-body">{children}</body>
     </html>
   );
 }
