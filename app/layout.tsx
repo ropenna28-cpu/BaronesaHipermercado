@@ -14,9 +14,9 @@ const workSans = Work_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'Baronesa — Desde 1998',
+  title: 'Hipermercado Baronesa — Pouso Alegre, MG desde 1998',
   description:
-    'Baronesa: quase três décadas servindo a região com frescor, variedade e uma paixão por música que virou tradição.',
+    'Hipermercado Baronesa: adega, lanchonete, mídia & informática, rotisseria, padaria e a loja de discos mais completa da região, em Pouso Alegre e região.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

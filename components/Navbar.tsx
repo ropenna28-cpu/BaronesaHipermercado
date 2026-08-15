@@ -1,19 +1,24 @@
 'use client';
 
 import { useState } from 'react';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
 const links = [
   { href: '#historia', label: 'História' },
-  { href: '#diferenciais', label: 'Diferenciais' },
+  { href: '#diferenciais', label: 'Setores' },
   { href: '#galeria', label: 'Galeria' },
   { href: '#localizacao', label: 'Localização' },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 200, damping: 30, restDelta: 0.001 });
+
   return (
     <header className="fixed top-0 z-50 w-full border-b border-paper/10 bg-ink/90 backdrop-blur">
+      <motion.div style={{ scaleX }} className="h-0.5 origin-left bg-gold" />
       <div className="mx-auto flex max-w-6xl items-center gap-4 px-4 py-4 md:px-8">
         <a href="#top" className="font-display text-xl tracking-tight text-paper">
           Baronesa

@@ -1,64 +1,105 @@
 import Image from 'next/image';
-import { MapPin, Phone, Clock, Instagram, Facebook } from 'lucide-react';
+import { MapPin, Phone, MessageCircle, Clock, Instagram, Facebook, Wine, Wifi, Disc3, Croissant, Soup, Cpu } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Reveal from '@/components/Reveal';
 import GrooveDivider from '@/components/GrooveDivider';
+import VinylDisc from '@/components/VinylDisc';
+import StatCounter from '@/components/StatCounter';
+import WhatsappButton from '@/components/WhatsappButton';
+
+const anos = new Date().getFullYear() - 1998;
 
 const timeline = [
   {
     year: '1998',
     image: '/historia/mercado-1998.jpg',
-    text: 'A loja original abre as portas na região, cercada por pouco mais que estradas e horizonte aberto — um mercado do tamanho da confiança que a vizinhança depositou nele.',
+    text: 'A loja original abre as portas em Pouso Alegre, cercada por pouco mais que estradas e horizonte aberto — um mercado do tamanho da confiança que a região depositou nele.',
   },
   {
     year: '2016',
     image: '/historia/mercado-2016.jpg',
-    text: 'Quase duas décadas depois, o Baronesa já é uma referência de bairro: mais lojas ao redor, mais gente, e um estacionamento raramente vazio.',
+    text: 'Quase duas décadas depois, o Baronesa já é referência regional: mais lojas ao redor, mais gente, e um estacionamento raramente vazio.',
   },
 ];
 
-const diferenciais = [
-  { title: 'Hortifruti', desc: 'Frutas, legumes e verduras selecionados todos os dias, direto do produtor.' },
-  { title: 'Açougue', desc: 'Cortes nobres e o atendimento de quem entende de carne há décadas.' },
-  { title: 'Padaria', desc: 'Pão saindo do forno a cada hora, do jeito que a casa merece.' },
-  { title: 'Adega', desc: 'Vinhos, espumantes e rótulos que vão além do óbvio.' },
-  { title: 'Loja de Discos', desc: 'Vinis, CDs e DVDs — o canto do Baronesa que não é sobre compras, é sobre paixão.' },
+const setores = [
+  { icon: Wine, title: 'Adega', desc: 'Vinhos nacionais e importados, selecionados para todos os paladares.' },
+  { icon: Disc3, title: 'Loja de CDs & DVDs', desc: 'A mais completa da região — vinis, CDs, DVDs e lançamentos.' },
+  { icon: Cpu, title: 'Mídia & Informática', desc: 'Grande variedade em produtos de tecnologia e informática.' },
+  { icon: Wifi, title: 'Lanchonete', desc: 'Um espaço com TV e internet para tomar um café com calma.' },
+  { icon: Soup, title: 'Rotisseria', desc: 'Pratos prontos e práticos para o dia a dia da sua família.' },
+  { icon: Croissant, title: 'Padaria', desc: 'Pão saindo do forno a cada hora, do jeito que a casa merece.' },
 ];
 
 export default function HomePage() {
   return (
     <>
       <Navbar />
+      <WhatsappButton />
 
       {/* Hero */}
-      <section id="top" className="relative flex min-h-[92vh] items-end overflow-hidden bg-ink text-paper">
+      <section id="top" className="relative flex min-h-[100vh] items-center overflow-hidden bg-ink text-paper">
         <div
           aria-hidden
           className="absolute inset-0 opacity-90"
           style={{
             backgroundImage:
-              'radial-gradient(circle at 78% 20%, rgba(217,164,65,0.18), transparent 45%), radial-gradient(circle at 15% 85%, rgba(110,42,61,0.25), transparent 50%)',
+              'radial-gradient(circle at 78% 20%, rgba(217,164,65,0.16), transparent 45%), radial-gradient(circle at 10% 90%, rgba(110,42,61,0.22), transparent 50%)',
           }}
         />
         <div
           aria-hidden
-          className="absolute right-[-140px] top-[-140px] h-[520px] w-[520px] rounded-disc border border-paper/10"
-        />
-        <div
-          aria-hidden
-          className="absolute right-[-60px] top-[-60px] h-[300px] w-[300px] rounded-disc border border-paper/10"
+          className="pointer-events-none absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+          }}
         />
 
-        <div className="relative mx-auto w-full max-w-6xl px-4 pb-20 pt-40 md:px-8">
-          <p className="font-body text-xs uppercase tracking-[0.35em] text-gold">Desde 1998</p>
-          <h1 className="mt-5 max-w-3xl font-display text-5xl leading-[1.05] md:text-7xl">
-            Quase três décadas abastecendo a região.
-          </h1>
-          <p className="mt-6 max-w-lg font-body text-paper/70">
-            O Baronesa começou pequeno e cresceu junto com o bairro. Esta é a
-            história de um mercado que virou ponto de encontro — e, no meio do
-            caminho, também virou loja de discos.
-          </p>
+        <div className="relative mx-auto grid w-full max-w-6xl items-center gap-14 px-4 pt-24 md:grid-cols-[1.15fr_0.85fr] md:px-8">
+          <div>
+            <p className="font-body text-xs uppercase tracking-[0.35em] text-gold">
+              Pouso Alegre &amp; região · Desde 1998
+            </p>
+            <h1 className="mt-5 max-w-2xl font-display text-5xl leading-[1.03] md:text-7xl">
+              {anos} anos abastecendo a região.
+            </h1>
+            <p className="mt-6 max-w-md font-body text-paper/70">
+              O Baronesa começou pequeno e cresceu junto com Pouso Alegre.
+              Hoje é hipermercado, adega, lanchonete e a loja de discos mais
+              completa da região — tudo num só endereço.
+            </p>
+            <div className="mt-9 flex flex-wrap gap-3">
+              <a
+                href="#historia"
+                className="rounded-full bg-gold px-6 py-3 font-body text-sm font-semibold text-ink transition hover:bg-gold-light"
+              >
+                Conhecer a história
+              </a>
+              <a
+                href="#localizacao"
+                className="rounded-full border border-paper/25 px-6 py-3 font-body text-sm font-semibold text-paper transition hover:bg-paper/10"
+              >
+                Como chegar
+              </a>
+            </div>
+          </div>
+
+          <div className="hidden md:block">
+            <VinylDisc />
+          </div>
+        </div>
+
+        <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-ink to-transparent" />
+      </section>
+
+      {/* Stats */}
+      <section className="border-y border-paper/10 bg-ink-light">
+        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-4 py-12 md:grid-cols-4 md:px-8">
+          <StatCounter value={anos} label="Anos de história" />
+          <StatCounter value={6} label="Setores especializados" />
+          <StatCounter value={1} label="Loja de discos regional" />
+          <StatCounter value={7} suffix="d/7" label="Atendimento por semana" />
         </div>
       </section>
 
@@ -95,29 +136,34 @@ export default function HomePage() {
               </Reveal>
             ))}
           </div>
+
+          <Reveal delay={0.15}>
+            <blockquote className="mt-20 border-l-2 border-gold py-2 pl-6 font-display text-2xl leading-snug text-ink/80 md:text-3xl">
+              "Buscamos sempre fazer o melhor para atender com qualidade e
+              conforto."
+            </blockquote>
+          </Reveal>
         </section>
 
         <GrooveDivider label="O que nos define" />
 
-        {/* Diferenciais */}
+        {/* Setores */}
         <section id="diferenciais" className="py-24 md:py-32">
           <Reveal>
-            <h2 className="font-display text-4xl text-ink md:text-5xl">Diferenciais</h2>
+            <h2 className="font-display text-4xl text-ink md:text-5xl">Setores</h2>
             <p className="mt-3 max-w-lg font-body text-ink/60">
-              Cinco departamentos que carregam a identidade do Baronesa — cada
-              um com sua própria curadoria.
+              Seis frentes especializadas, cada uma com sua própria curadoria
+              — é isso que faz do Baronesa mais que um hipermercado.
             </p>
           </Reveal>
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {diferenciais.map((d, i) => (
-              <Reveal key={d.title} delay={i * 0.06}>
+            {setores.map((s, i) => (
+              <Reveal key={s.title} delay={i * 0.06}>
                 <div className="h-full rounded-2xl border border-ink/10 bg-white/50 p-7 transition hover:-translate-y-1 hover:border-gold/60 hover:shadow-lg hover:shadow-ink/5">
-                  <span className="font-display text-3xl text-wine">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <h3 className="mt-4 font-display text-xl text-ink">{d.title}</h3>
-                  <p className="mt-2 font-body text-sm text-ink/60">{d.desc}</p>
+                  <s.icon size={24} className="text-wine" />
+                  <h3 className="mt-4 font-display text-xl text-ink">{s.title}</h3>
+                  <p className="mt-2 font-body text-sm text-ink/60">{s.desc}</p>
                 </div>
               </Reveal>
             ))}
@@ -167,13 +213,21 @@ export default function HomePage() {
           <div className="mt-12 grid gap-10 md:grid-cols-[1fr_1.2fr]">
             <Reveal className="space-y-5 font-body text-sm text-paper/75">
               <div className="flex items-start gap-3">
-                <MapPin size={18} className="mt-0.5 text-gold" /> Av. Principal, 1200 — Centro
+                <MapPin size={18} className="mt-0.5 text-gold" /> Pouso Alegre — MG e região
               </div>
               <div className="flex items-start gap-3">
-                <Phone size={18} className="mt-0.5 text-gold" /> (11) 4000-0000
+                <Phone size={18} className="mt-0.5 text-gold" /> (35) 3429-6802
               </div>
+              <a
+                href="https://wa.me/5535988620301"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-3 hover:text-gold"
+              >
+                <MessageCircle size={18} className="mt-0.5 text-gold" /> WhatsApp: (35) 98862-0301
+              </a>
               <div className="flex items-start gap-3">
-                <Clock size={18} className="mt-0.5 text-gold" /> Seg–sáb, 7h às 22h · Dom, 8h às 20h
+                <Clock size={18} className="mt-0.5 text-gold" /> Consulte os horários por loja
               </div>
               <div className="flex gap-4 pt-2">
                 <a href="#" aria-label="Instagram" className="text-paper/60 hover:text-gold">
@@ -190,8 +244,8 @@ export default function HomePage() {
           </div>
 
           <div className="mt-20 flex flex-col gap-2 border-t border-paper/10 pt-6 font-body text-xs text-paper/40 md:flex-row md:items-center md:justify-between">
-            <p>© {new Date().getFullYear()} Baronesa. Desde 1998.</p>
-            <p>CNPJ 00.000.000/0001-00</p>
+            <p>© {new Date().getFullYear()} Hipermercado Baronesa. Desde 1998.</p>
+            <p>Pouso Alegre — MG</p>
           </div>
         </div>
       </section>
